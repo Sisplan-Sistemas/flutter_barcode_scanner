@@ -24,7 +24,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: br.com.sisplansistemas.flutterbarcodescanner
+        package: com.amolg.flutterbarcodescanner
         pluginClass: FlutterBarcodeScannerPlugin
       ios:
         pluginClass: SwiftFlutterBarcodeScannerPlugin
