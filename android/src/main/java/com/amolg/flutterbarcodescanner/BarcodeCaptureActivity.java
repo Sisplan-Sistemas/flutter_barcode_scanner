@@ -56,6 +56,14 @@ import com.google.android.gms.vision.MultiProcessor;
 import com.google.android.gms.vision.barcode.Barcode;
 import com.google.android.gms.vision.barcode.BarcodeDetector;
 
+import android.view.WindowInsetsController;
+import android.view.WindowInsets;
+import android.view.Window;
+import android.view.WindowManager;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+
 import java.io.IOException;
 
 /**
@@ -116,6 +124,17 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
             buttonText = "Cancel";
             Log.e("BCActivity:onCreate()", "onCreate: " + e.getLocalizedMessage());
         }
+
+            // Enable edge-to-edge
+            WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+            WindowInsetsControllerCompat insetsController =
+                    new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView());
+
+            // Optional: hide status bar and make it immersive
+            insetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+            insetsController.hide(WindowInsetsCompat.Type.systemBars());
+
+            setContentView(R.layout.barcode_capture);
 
         Button btnBarcodeCaptureCancel = findViewById(R.id.btnBarcodeCaptureCancel);
         btnBarcodeCaptureCancel.setText(buttonText);
