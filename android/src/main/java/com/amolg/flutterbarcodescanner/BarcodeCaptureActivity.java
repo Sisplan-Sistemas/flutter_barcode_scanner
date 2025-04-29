@@ -125,6 +125,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
             Log.e("BCActivity:onCreate()", "onCreate: " + e.getLocalizedMessage());
         }
 
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             // Enable edge-to-edge
             WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
             WindowInsetsControllerCompat insetsController =
@@ -135,6 +136,7 @@ public final class BarcodeCaptureActivity extends AppCompatActivity implements B
             insetsController.hide(WindowInsetsCompat.Type.systemBars());
 
             setContentView(R.layout.barcode_capture);
+        }
 
         Button btnBarcodeCaptureCancel = findViewById(R.id.btnBarcodeCaptureCancel);
         btnBarcodeCaptureCancel.setText(buttonText);
